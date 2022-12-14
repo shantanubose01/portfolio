@@ -4,58 +4,10 @@ import styled from 'styled-components'
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 const Contact = () => {
-    const [submit, setSubmit] = useState(false)
-    const [data, setData] = useState({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-    });
-
-
-    const handleSubmission = (e) => {
-        e.preventDefault();
-        if (data.name && data.email && data.subject && data.message) {
-            emailjs.send('service_po6idda', 'template_g5erg0q', data, 'Ob6YgTaYqeObolMjc')
-                .then((response) => {
-                    setSubmit(true)
-                }).catch((error) => {
-                    setSubmit(false)
-                    setData({
-                        ...data,
-                        name: '',
-                        email: '',
-                        subject: '',
-                        message: ''
-                    })
-                });
-        }
-    };
-
-    useEffect(() => {
-        let id = setInterval(() => {
-            setSubmit(false);
-
-        }, 5000)
-
-        if (!submit) {
-            setData({
-                ...data,
-                name: '',
-                email: '',
-                subject: '',
-                message: ''
-            })
-        };
-
-        return () => {
-            clearInterval(id)
-        }
-
-    }, [submit]);
+  
 
     return (
         <Container id='contact'>
@@ -95,27 +47,7 @@ const Contact = () => {
                         </div>
                     </div>
                 </div>
-                {submit && <>
-                    <div className='emailSent'>
-                        <h1 style={{ color: '#01a479' }}>Email Sent Successfully.</h1>
-                        <p>Thank you <span style={{ fontWeight: 'bold' }}>{data.name}</span>, your message has been submitted to us.</p>
-                    </div>
-                </>}
-                <div className='contactForm'>
-                    <form action="" onSubmit={handleSubmission}>
-                        <div>
-                            <input value={submit ? '' : data.name} type="text" name='name' placeholder='Name' onChange={(e) => setData({ ...data, name: e.target.value })} />
-                            <input value={submit ? '' : data.email} type="email" name='email' placeholder='Email' onChange={(e) => setData({ ...data, email: e.target.value })} />
-                            <input value={submit ? '' : data.subject} type="text" name='subject' placeholder='Subject' onChange={(e) => setData({ ...data, subject: e.target.value })} />
-                        </div>
-                        <div>
-                            <textarea value={submit ? '' : data.message} type="text" name='message' placeholder='Your Message' onChange={(e) => setData({ ...data, message: e.target.value })} />
-                            <div>
-                                <button type='submit'>Send Message</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+               
 
             </div>
             
