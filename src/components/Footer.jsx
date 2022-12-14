@@ -7,15 +7,13 @@ function Footer() {
       <div className="container">
         <span className="logo">𝕾𝖍𝖆𝖓𝖙𝖆𝖓𝖚.</span>
         <div className="links">
-          <a href="#">
-            <i className="fab fa-facebook"></i>
+          <a href="https://www.linkedin.com/in/shantanubose01/">
+            <i className="fab fa-linkedin"></i>
           </a>
-          <a href="#">
-            <i className="fab fa-youtube"></i>
+          <a href="https://github.com/shantanubose01">
+            <i className="fab fa-github"></i>
           </a>
-          <a href="#">
-            <i className="fab fa-twitter"></i>
-          </a>
+          
         </div>
         <p className="copyright">
           <i className="fas fa-heart"></i>
